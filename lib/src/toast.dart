@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'enum/toast_position.dart';
+import 'enum/widget_toast_position.dart';
 
-class Toast {
+class WidgetToast {
   static show(
     context, {
-    GToastPosition toastPosition = GToastPosition.bottom,
+    WidgetToastPosition toastPosition = WidgetToastPosition.bottom,
     @required Function(BuildContext context) builder,
     Duration duration = const Duration(seconds: 2),
   }) async {
     final overlayState = Overlay.of(context);
     var alignment;
     switch (toastPosition) {
-      case GToastPosition.top:
+      case WidgetToastPosition.top:
         alignment = Alignment.topCenter;
 
         break;
-      case GToastPosition.center:
+      case WidgetToastPosition.center:
         alignment = Alignment.center;
         break;
-      case GToastPosition.bottom:
+      case WidgetToastPosition.bottom:
         alignment = Alignment.bottomCenter;
         break;
       default:
@@ -45,8 +45,13 @@ class Toast {
     });
 
     overlayState.insert(overlay);
-    Future.delayed(duration).then((_) {
+    Future.delayed(duration ?? Duration(hours: 1)).then((_) {
       overlay.remove();
     });
+  }
+
+  static cancel(BuildContext context) {
+    var overlay = OverlayEntry(builder: (context) => Container());
+    overlay.remove();
   }
 }

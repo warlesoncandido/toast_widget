@@ -1,4 +1,4 @@
-library toast_widget;
+library widget_toast;
 
-export './src/enum/toast_position.dart';
+export 'src/enum/widget_toast_position.dart';
 export './src/toast.dart';
