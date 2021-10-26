@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter(BuildContext context) {
-    Toast.show(
+    WToast.show(
       context,
       builder: (context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -70,7 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _incrementCounter(context),
+        onPressed: () {
+          WToast.show(
+            context,
+            onTapClose: true,
+            builder: (context) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Card(
+                color: Colors.green,
+                elevation: 8,
+                child: ListTile(
+                  title: Text("Sucesso"),
+                  subtitle: Text("Foi enviado com sucesso!"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                ),
+              ),
+            ),
+          );
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),

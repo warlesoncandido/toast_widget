@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'enum/toast_position.dart';
 
-class Toast {
+class WToast {
   static show(
     context, {
     GToastPosition toastPosition = GToastPosition.bottom,
