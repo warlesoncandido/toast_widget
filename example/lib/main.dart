@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_widget/toast_widget.dart';
+import 'package:toast_w/toast_widget.dart';
 
 void main() {
   runApp(MyApp());
