@@ -107,14 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          WidgetToast.show(context,
+          ToastW.show(context,
               duration: Duration(seconds: 5),
-              toastPosition: WidgetToastPosition.bottom,
+              toastPosition: ToasWPosition.bottom,
               builder: (context) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
                       onTap: () {
-                        WidgetToast.cancel(context);
+                        ToastW.cancel(context);
                       },
                       tileColor: Colors.red,
                       leading: Icon(

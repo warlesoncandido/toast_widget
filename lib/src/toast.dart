@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'enum/widget_toast_position.dart';
 
-class WidgetToast {
+class ToastW {
   static show(
     context, {
-    WidgetToastPosition toastPosition = WidgetToastPosition.bottom,
+    ToasWPosition toastPosition = ToasWPosition.bottom,
     bool onTapClose = false,
     @required Function(BuildContext context) builder,
     Duration duration = const Duration(seconds: 2),
@@ -14,13 +14,13 @@ class WidgetToast {
     OverlayEntry overlay;
     var alignment;
     switch (toastPosition) {
-      case WidgetToastPosition.top:
+      case ToasWPosition.top:
         alignment = Alignment.topCenter;
         break;
-      case WidgetToastPosition.center:
+      case ToasWPosition.center:
         alignment = Alignment.center;
         break;
-      case WidgetToastPosition.bottom:
+      case ToasWPosition.bottom:
         alignment = Alignment.bottomCenter;
         break;
       default:

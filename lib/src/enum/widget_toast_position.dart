@@ -1,1 +1,1 @@
-enum WidgetToastPosition { top, center, bottom }
+enum ToasWPosition { top, center, bottom }
