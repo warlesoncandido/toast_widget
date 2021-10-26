@@ -32,19 +32,21 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter(BuildContext context) {
-    Toast.show(context,
-        builder: (context) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Card(
-                color: Colors.green,
-                elevation: 8,
-                child: ListTile(
-                  title: Text("Sucesso"),
-                  subtitle: Text("Foi enviado com sucesso!"),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                ),
-              ),
-            ));
+    Toast.show(
+      context,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Card(
+          color: Colors.green,
+          elevation: 8,
+          child: ListTile(
+            title: Text("Sucesso"),
+            subtitle: Text("Foi enviado com sucesso!"),
+            trailing: Icon(Icons.arrow_forward_ios),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
