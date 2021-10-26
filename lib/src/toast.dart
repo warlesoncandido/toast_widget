@@ -6,15 +6,16 @@ class WidgetToast {
   static show(
     context, {
     WidgetToastPosition toastPosition = WidgetToastPosition.bottom,
+    bool onTapClose = false,
     @required Function(BuildContext context) builder,
     Duration duration = const Duration(seconds: 2),
   }) async {
     final overlayState = Overlay.of(context);
+    OverlayEntry overlay;
     var alignment;
     switch (toastPosition) {
       case WidgetToastPosition.top:
         alignment = Alignment.topCenter;
-
         break;
       case WidgetToastPosition.center:
         alignment = Alignment.center;
@@ -25,29 +26,37 @@ class WidgetToast {
       default:
     }
 
-    var overlay = OverlayEntry(builder: (context) {
-      return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Align(
-              alignment: alignment,
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                child: Builder(
-                  builder: builder,
-                ),
+    overlay = OverlayEntry(
+      builder: (context) {
+        return Align(
+          alignment: alignment,
+          child: GestureDetector(
+            onTap: () {
+              if (onTapClose) {
+                overlay.remove();
+                overlay = null;
+              }
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              child: Builder(
+                builder: builder,
               ),
-            )
-          ],
-        ),
-      );
-    });
+            ),
+          ),
+        );
+      },
+    );
 
     overlayState.insert(overlay);
-    Future.delayed(duration ?? Duration(hours: 1)).then((_) {
-      overlay.remove();
-    });
+
+    Future.delayed(duration).then(
+      (_) {
+        if (overlay != null) {
+          overlay.remove();
+        }
+      },
+    );
   }
 
   static cancel(BuildContext context) {

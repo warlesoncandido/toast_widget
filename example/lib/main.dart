@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:toast_widget/toast_widget.dart';
 
 void main() {
