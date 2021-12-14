@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_widget/toast_widget.dart';
+import 'package:toast_w/toast_w.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,24 +31,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter(BuildContext context) {
-    WToast.show(
-      context,
-      builder: (context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Card(
-          color: Colors.green,
-          elevation: 8,
-          child: ListTile(
-            title: Text("Sucesso"),
-            subtitle: Text("Foi enviado com sucesso!"),
-            trailing: Icon(Icons.arrow_forward_ios),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          WToast.show(
+          ToastW.show(
             context,
             onTapClose: true,
             builder: (context) => Padding(

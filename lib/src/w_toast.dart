@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'enum/toast_position.dart';
 
-class WToast {
+class ToastW {
   static show(
     context, {
     GToastPosition toastPosition = GToastPosition.bottom,
     bool onTapClose = false,
-    @required Function(BuildContext context) builder,
+    required Function(BuildContext context) builder,
     Duration duration = const Duration(seconds: 2),
   }) async {
     final overlayState = Overlay.of(context);
-    OverlayEntry overlay;
-    var alignment;
+    OverlayEntry? overlay;
+    late var alignment;
     switch (toastPosition) {
       case GToastPosition.top:
         alignment = Alignment.topCenter;
@@ -33,14 +33,14 @@ class WToast {
           child: GestureDetector(
             onTap: () {
               if (onTapClose) {
-                overlay.remove();
+                overlay!.remove();
                 overlay = null;
               }
             },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 20),
               child: Builder(
-                builder: builder,
+                builder: builder as Widget Function(BuildContext),
               ),
             ),
           ),
@@ -48,12 +48,12 @@ class WToast {
       },
     );
 
-    overlayState.insert(overlay);
+    overlayState!.insert(overlay!);
 
     Future.delayed(duration).then(
       (_) {
         if (overlay != null) {
-          overlay.remove();
+          overlay!.remove();
         }
       },
     );
